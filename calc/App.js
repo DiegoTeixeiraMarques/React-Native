@@ -12,12 +12,15 @@ const initialState = {
 }
 
 export default class App extends Component {
-  state = {
-    ...initialState                                                             // Operador 'expred', fez um clone do objeto initialState
-  }
+  state = { ...initialState }                                                   // Operador 'expred', fez um clone do objeto initialState
 
   addDigit = n => {                                                             // Add digito quando clicado
-    this.setState({ displayValue: n })
+    if (n === '.' && this.state.displayValue.includes('.')) {
+      return
+    }
+
+    const clearDisplay = this.state.displayValue === '0'
+    || this.state.clearDisplay
   }
 
   clearMemory = () => {                                                         // Limpa tela da calculadora quando solicitado
