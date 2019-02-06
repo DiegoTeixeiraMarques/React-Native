@@ -3,9 +3,17 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import Button from './src/components/Button'
 import Display from './src/components/Display'
 
+const initialState = {
+  displayValue: '0',
+  clearDisplay: false,
+  operation: null,
+  values: [0, 0],
+  current: 0
+}
+
 export default class App extends Component {
   state = {
-    displayValue: '0'
+    ...initialState                                                             // Operador 'expred', fez um clone do objeto initialState
   }
 
   addDigit = n => {                                                             // Add digito quando clicado
@@ -53,7 +61,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   buttons: {
-    flexDirection: 'row',                               //Flexiona os componentes em linhas
+    flexDirection: 'row',                                                        //Flexiona os componentes em linhas
     flexWrap: 'wrap',
   }
 });
