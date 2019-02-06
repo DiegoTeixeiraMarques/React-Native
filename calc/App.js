@@ -3,7 +3,7 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import Button from './src/components/Button'
 import Display from './src/components/Display'
 
-const initialState = {
+const initialState = {                                                          // Estado inicial da calculadora
   displayValue: '0',
   clearDisplay: false,
   operation: null,
@@ -35,7 +35,7 @@ export default class App extends Component {
   }
 
   clearMemory = () => {                                                         // Limpa tela da calculadora quando solicitado
-    this.setState ({ displayValue: '0' })
+    this.setState ({ ...initialState })
   }
 
   setOperation = operation => {
