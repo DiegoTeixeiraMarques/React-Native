@@ -12,25 +12,25 @@ const initialState = {                                                          
 }
 
 export default class App extends Component {
-  state = { ...initialState }                                                   // Operador 'expred', fez um clone do objeto initialState
+  state = { ...initialState }                                                   // Operador Spread, fez um clone do objeto initialState
 
   addDigit = n => {                                                             // Add digito quando clicado
-    //console.debug(typeof this.state.displayValue)                             // Verificar tipos dos valores digitados atrvés do console
+    //console.debug(typeof this.state.displayValue)                             // Verificar tipos dos valores digitados através do console
     
-    const clearDisplay = this.state.displayValue === '0'
+    const clearDisplay = this.state.displayValue === '0'                        // Se display só tiver "0" ou se clearDisplay for "true" o display será limpo
     || this.state.clearDisplay
 
-    if (n === '.' && !clearDisplay && this.state.displayValue.includes('.')) {
+    if (n === '.' && !clearDisplay && this.state.displayValue.includes('.')) {  // Verifica se já tem um "." digitado para não permitir a digitação de dois pontos
       return
     }
 
-    const currentValue = clearDisplay ? '' : this.state.displayValue
-    const displayValue = currentValue + n
-    this.setState({ displayValue, clearDisplay: false })
+    const currentValue = clearDisplay ? '' : this.state.displayValue            // Limpa display se clearDisplay for "true", senão insere o valor digitado pelo usuário
+    const displayValue = currentValue + n                                       // Concatena os valores digitados
+    this.setState({ displayValue, clearDisplay: false })                        // clearDisplay passa a ser "falso"
 
     if (n !== '.') {
       const newValue = parseFloat(displayValue)
-      const values = [...this.state.values]
+      const values = [...this.state.values]                                     // Faz um clone dos valores
       values[this.state.current] = newValue
       this.setState({ values })
     }
@@ -43,16 +43,15 @@ export default class App extends Component {
   setOperation = operation => {
 
     if (this.state.current === 0) {
-      this.setState({ operation, current: 1, clearDisplay: true })
+      this.setState({ operation, current: 1, clearDisplay: true })              // Limpa o display após clicar em uma nova operação, quando já se tem uma "setada"
     } else {
       const equals = operation === '='
       const values = [...this.state.values]
       try {
-        values[0] = eval(`${values[0]} ${this.state.operation} ${values[1]}`)
+        values[0] = eval(`${values[0]} ${this.state.operation} ${values[1]}`)   // Concatena, analisa e executa a operação
 
       } catch (e) {
-        values[0] = this.state.values[0]
-      
+        values[0] = this.state.values[0] 
       }
 
       values[1] = 0
