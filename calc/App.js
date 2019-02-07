@@ -15,6 +15,7 @@ export default class App extends Component {
   state = { ...initialState }                                                   // Operador 'expred', fez um clone do objeto initialState
 
   addDigit = n => {                                                             // Add digito quando clicado
+    //console.debug(typeof this.state.displayValue)                             // Verificar tipos dos valores digitados atrvés do console
     if (n === '.' && this.state.displayValue.includes('.')) {
       return
     }
