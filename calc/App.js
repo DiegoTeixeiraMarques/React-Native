@@ -4,11 +4,11 @@ import Button from './src/components/Button'
 import Display from './src/components/Display'
 
 const initialState = {                                                          // Estado inicial da calculadora
-  displayValue: '0',
-  clearDisplay: false,
-  operation: null,
-  values: [0, 0],
-  current: 0
+  displayValue: '0',                                                            // Estado inicial do display
+  clearDisplay: false,                                                          // Corresponde se o display precisa ser limpo ou não após uma ação
+  operation: null,                                                              // Armazena a operação que será utilizada
+  values: [0, 0],                                                               // Armazena operandos
+  current: 0                                                                    // Indice do Array da linha anterior, permite saber qual valor está sendo "setado"
 }
 
 export default class App extends Component {
