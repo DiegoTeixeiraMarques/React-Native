@@ -56,7 +56,7 @@ export default class App extends Component {
 
       values[1] = 0
       this.setState({ 
-        displayValue: calues[0],
+        displayValue: `${values[0]}`,
         operation: equals ? null : operation,
         current: equals ? 0 : 1,
         clearDisplay: true,                                                     // Limpa o display após apertar "=" e inserir outro valor
