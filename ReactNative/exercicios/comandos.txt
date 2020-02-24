@@ -1,0 +1,15 @@
+
+# Listar Emuladores
+emulator -list-avds
+
+# Abrir o emulador
+emulator -no-snapshot -avd Nexus_5X_API_29_x86
+
+# Rodar a Aplicação
+react-native run-android
+
+# Instalar React Native
+npm i -g react-native-cli
+
+# Iniciar um projeto React Native
+react-native init <nome_projeto>
